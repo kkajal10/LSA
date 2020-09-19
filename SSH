@@ -1,0 +1,16 @@
+SSH (secure shell)
+The SSH command provides a secure encrypted connection between two hosts over an insecure network.
+   The connection can also be used for terminal access, file transfers & for tunelling other applications
+   
+   commands :
+   sudo apt-get -y install openssh-server
+   
+   sudo systemctl enable ssh
+   
+   sudo systemctl start ssh
+   
+   sudo systemctl status ssh
+   
+   sudo ssh localhost
+   
+   
