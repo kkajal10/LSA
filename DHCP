@@ -1,0 +1,11 @@
+Dynamic Host Configuration Protocol Daemon (DHCPD), the DHCP server, is responsible for serving IP addresses and other relevant information upon client request,
+A DHCP server dynamically assigns an IP address and other network configuration parameters to each device on a network so they can communicate with other IP networks. 
+
+
+steps for command:
+install dhcp-server:  $sudo apt install -y isc-dhcp-server
+configure  dhcpd.conf through a path : $sudo nano /etc/dhcp/dhcpd.conf
+for ip address : $ip a (or)  $ip addr
+configure the subnet  and the netmask , then save the file and exit
+enable the services use the command: $sudo systemctl enable isc-dhcp-server.service
+start the service : $sudo systemctl start isc-dhcp-server.service
