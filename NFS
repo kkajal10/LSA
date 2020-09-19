@@ -1,0 +1,17 @@
+The Network File System (NFS) is a client/server application that lets a computer user view and optionally store and 
+   update files on a remote computer as though they were on the user's own computer
+   There are 4 versions of nfs - nfsv2, nfsv3, nfsv4 ,NFSv2
+   
+   commands:
+   sudo apt-get -y install nfs-kernel-server
+
+   sudo systemctl enable nfs-kernel-server
+   
+   mkdir emo_dir (create directory for mounting)
+     touch ab.txt
+     cat /etc/exports
+     sudo exportfs -ra
+
+sudo apt-get -y install nfs-common
+
+sudo mount -t nfs 127.0.01:/home/system/emo_dir /home/system_directory
