@@ -1,0 +1,63 @@
+Samba is an open source implementation of the Server Message Block/Common Internet File System (SMB/CIFS) protocol suite
+Samba has provided secure, stable and fast file and print services for all clients using the SMB/CIFS protocol, such as all versions of 
+DOS and Windows, OS/2, Linux and many others
+
+ install Samba Server :- sudo apt-get -y install samba
+     
+     make a samba_shared directory in /home/system  
+
+Then w make few txt files in /home/system/samba_shared 
+    touch a.txt b.txt c.txt
+    
+    cd /etc/samba
+   ls /etc/samba
+   
+   backup of smb.conf 
+    cp smb.conf smb.conf_bkp 
+    
+   do few configuration in /etc/smb.conf
+      sudo nano smb.conf
+     
+ delete all the things inside smb.conf and then write:
+
+    [samba_shared]
+	comment = Welcome to samba
+	path = /home/system/samba_shared
+	browseable = yes
+	read only = yes
+	guest ok = no
+  
+  smbclient if not there then the command is:
+    sudo apt-get -y install smbclient
+    
+    
+start/stop services of both smbd and nmbd
+   sudo systemctl start smbd
+   sudo systemctl stop nmbd
+   
+   2nd part:
+   whoami
+   sudo pdbedit -a -u $(whoami)
+   sudo pdbedit -L (to check all users)
+   sudo ufw allow from (your ip addr) any app Samba
+   e.g;sudo ufw allow from 192.168.254.130/24 to any app Samba
+   sudo ufw reload  
+   sudo smbclient -U <username> -L  //your ip
+   e.g;sudo smbcllient -U system -L  //192.168.254.130
+   
+   
+   restart both smbd and nmbd services:
+     sudo systemctl restart smbd
+     sudo systemctl restart nmbd
+
+check their status 
+    sudo systemctl status smbd
+    sudo systemctl status nmbd
+
+
+3rd part:
+ on window open run type your ip address
+e.g;  //192.168.56.101 and press OK
+
+
+Once all your samba_shared files are visible in windows, then the sharing of files/folders have been successfully done between Windows and Kali Linux
